@@ -1,0 +1,340 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class TutorialScript : MonoBehaviour
+{
+    GameObject canvas;
+    Renderer[] rendAI;
+    Renderer[] rendButton;
+    Renderer[] rendItem;
+    Renderer[] rendSphere;
+    GameObject AI;
+    GameObject Button;
+    GameObject Item;
+    GameObject Sphere;
+    public GameObject gun;
+    private CharacterController _controller;
+    private bool stage1, stage2, stage3, stage4, stage5, stage6, stage7;
+    public float Speed = 10f;
+    private float fallAcceleration = 1.005f;
+    public float verticalVelocity;
+    public float gravity = 7.0f;
+    public float jumpForce = 3.5f;
+    private float jumpBoost = 5.0f;
+    public Vector3 RayHitPoint;
+    public bool toChange = false;
+    public bool buttonSpotted = false;
+    public bool itemSpotted = false;
+    public bool sphereSpotted = false;
+    public float HitBox;
+    public float timer, timer2;
+
+    bool gunEquiped = false;
+    bool buttonActivated = false;
+
+    GameObject FinishWithoutSprint;
+    GameObject FinishSprint;
+    GameObject FinishJump;
+    GameObject FinalFinish;
+
+    Vector3 originalButtonPos;
+    Vector3 originalGunPos;
+
+
+    void Start()
+    {
+        stage1 = true;
+        stage2 = false;
+        stage3 = false;
+        stage4 = false;
+        stage5 = false;
+        stage6 = false;
+        stage7 = false;
+        _controller = GetComponent<CharacterController>();
+        Button = GameObject.Find("Button");
+        canvas = GameObject.Find("UI");
+        Sphere = GameObject.Find("Spheres");
+        AI = GameObject.Find("AI");
+        Item = GameObject.Find("Items");
+        rendAI = AI.GetComponentsInChildren<Renderer>();
+        rendButton = Button.GetComponentsInChildren<Renderer>();
+        rendItem = Item.GetComponentsInChildren<Renderer>();
+        rendSphere = Sphere.GetComponentsInChildren<Renderer>();
+        
+
+        FinishWithoutSprint = GameObject.Find("Finish");
+        FinishWithoutSprint.SetActive(false);
+        FinishSprint = GameObject.Find("SFinish");
+        FinishSprint.SetActive(false);
+        FinishJump = GameObject.Find("JFinish");
+        FinishJump.SetActive(false);
+        FinalFinish = GameObject.Find("Final");
+        FinalFinish.SetActive(false);
+        gun.SetActive(false);
+        Button.SetActive(false);
+        timer2 = 3f;
+        originalButtonPos = Button.transform.position;
+        originalGunPos = gun.transform.position;
+        foreach (Renderer r in rendAI)
+        {
+            r.material.SetColor("_Color", Color.white);
+        }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+        //Gestion des mouvements du joueur, des sauts
+
+        if (stage2 == true) //etape 2 du tutoriel
+        {
+            Vector3 move = Vector3.zero;
+
+            float speedFactor = 1.0f;
+
+            if (stage3 == true) //etape 3 du tutoriel
+            {
+                if (Input.GetKey(KeyCode.LeftShift))
+                {
+                    speedFactor = 2.5f;
+                    timer2 -= Time.deltaTime;
+                    if (timer2 < 0)
+                        timer2 = 0;
+                }
+                if (Input.GetKey(KeyCode.LeftControl))
+                    speedFactor = 0.5f;
+                if(timer2 == 0 && Mathf.Abs(FinishSprint.transform.position.x - transform.position.x) <= 0.5f && Mathf.Abs(FinishSprint.transform.position.z - transform.position.z) <= 0.5f)
+                {
+                    FinishSprint.SetActive(false);
+                    FinishJump.SetActive(true);
+                    stage4 = true;
+
+                }
+
+            }
+
+            float totalSpeed = Speed * speedFactor;
+
+            if (Input.GetKey(KeyCode.Z))
+                move += (transform.forward) * totalSpeed;
+            if (Input.GetKey(KeyCode.S))
+                move -= (transform.forward) * totalSpeed;
+            if (Input.GetKey(KeyCode.Q))
+                move -= (transform.right) * totalSpeed;
+            if (Input.GetKey(KeyCode.D))
+                move += (transform.right) * totalSpeed;
+
+            if (Mathf.Abs(transform.position.x - FinishWithoutSprint.transform.position.x) <= 0.5f && Mathf.Abs(transform.position.z - FinishWithoutSprint.transform.position.z) <= 0.5f)
+            {
+                stage3 = true;
+                FinishWithoutSprint.SetActive(false);
+                FinishSprint.SetActive(true);
+            }
+
+
+            if (stage4 == true) //etape 4 du tutoriel
+            {
+                if (_controller.isGrounded)
+                {
+                    gravity = 7.0f;
+                    verticalVelocity = -gravity * Time.deltaTime;
+                    if (Input.GetKeyDown(KeyCode.Space))
+                    {
+                        verticalVelocity = jumpForce;
+                    }
+                }
+                else
+                {
+                    verticalVelocity -= gravity * Time.deltaTime;
+                    gravity *= fallAcceleration;
+                }
+                if (Mathf.Abs(transform.position.x - FinishJump.transform.position.x) <= 1.5f && Mathf.Abs(transform.position.z - FinishJump.transform.position.z) <= 1.5f)
+                {
+                    FinishJump.SetActive(false);
+                    stage5 = true;
+                    gun.SetActive(true);
+                    Button.SetActive(true);
+
+                }
+            }
+
+            move.y = verticalVelocity * jumpBoost;
+
+            _controller.Move(move * Time.deltaTime);
+
+        }
+
+
+        //Gestion interactions avec des objets/bonus/boutons
+
+        RaycastHit hit;
+        Ray ray = Camera.main.ScreenPointToRay(canvas.transform.position);
+
+
+        if (stage1 == true) //étape 1 du tutoriel
+        {
+            if (Physics.Raycast(ray, out hit))
+            {
+            
+
+                RayHitPoint = hit.point;
+
+                if (hit.collider.tag == "SkySphere")
+                {
+                    int g = 0;
+                    foreach(Renderer r in rendSphere)
+                    {
+                        if (Vector3.Distance(Sphere.transform.GetChild(g).position, RayHitPoint) <= Sphere.transform.GetChild(g).localScale.x)
+                        {
+                            r.material.SetColor("_Color", Color.green);
+                            sphereSpotted = true;    
+                        }
+                        g++;
+                    }
+                    if (sphereSpotted == true)
+                    {
+                        foreach(Renderer r in rendSphere)
+                        {
+                            r.material.SetColor("_Color", Color.white);
+                        }
+                        stage2 = true;
+                        FinishWithoutSprint.SetActive(true);
+                        Sphere.SetActive(false);
+                    }
+                }
+
+
+                if (stage5 == true)
+                {
+                    
+
+                    if (hit.collider.tag == "Button")
+                    {
+                        int j = 0;
+                        foreach (Renderer r in rendButton)
+                        {
+                            if (Vector3.Distance(Button.transform.GetChild(j).position, RayHitPoint) <= Button.transform.GetChild(j).localScale.x)
+                            {
+                                r.material.SetColor("_Color", Color.cyan);
+                                buttonSpotted = true;
+                            }
+                            j++;
+                        }
+                    }
+                    if (hit.collider.tag != "Button" && buttonSpotted == true)
+                    {
+                        foreach (Renderer r in rendButton)
+                        {
+
+                            r.material.SetColor("_Color", Color.white);
+                            buttonSpotted = false;
+                        }
+                    }
+
+                    if (hit.collider.tag == "Item")
+                    {
+                        int k = 0;
+                        foreach (Renderer r in rendItem)
+                        {
+                            if (Vector3.Distance(Item.transform.GetChild(k).position, RayHitPoint) <= Item.transform.GetChild(k).localScale.x)
+                            {
+                                r.material.SetColor("_Color", Color.yellow);
+                                itemSpotted = true;
+                            }
+                            k++;
+                        }
+
+                    }
+
+                    if (hit.collider.tag != "Item" && itemSpotted == true)
+                    {
+                        foreach (Renderer r in rendItem)
+                        {
+                            r.material.SetColor("_Color", Color.white);
+                            itemSpotted = false;
+                        }
+                    }
+                    if(buttonActivated == true && gunEquiped == true)
+                    {
+                        stage6 = true;
+                    }
+
+                    if (stage6 == true)
+                    {
+                        if (Input.GetMouseButtonDown(0))
+                        {
+                            if (hit.collider.tag == "Enemy")
+                            {
+                                
+                                if (hit.collider != null)
+                                {
+
+                                    int i = 0;
+                                    foreach (Renderer r in rendAI)
+                                    {
+
+                                        if (Vector3.Distance(AI.transform.GetChild(i).position, RayHitPoint) <= AI.transform.GetChild(i).localScale.x)
+                                        {
+                                            r.material.SetColor("_Color", Color.red);
+                                            toChange = true;
+                                            timer = 0.1f;
+                                            stage7 = true;
+                                        }
+
+                                        i++;                               
+                                    }
+                                }
+                            }
+                        }
+                        
+                    }
+                    if (timer > 0 && toChange == true)
+                    {
+                        timer -= Time.deltaTime;
+                        if (timer < 0)
+                        {
+                            timer = 0;
+                            toChange = false;
+                            foreach (Renderer r in rendAI)
+                            {
+                                r.material.SetColor("_Color", Color.white);
+                            }
+                            foreach (Renderer r in rendButton)
+                            {
+                                r.material.SetColor("_Color", Color.white);
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+
+        Vector3 currentButtonPosition = Button.transform.position;
+        if (currentButtonPosition != originalButtonPos)
+        {
+            buttonActivated = true;
+        }
+
+        Vector3 currentGunPosition = gun.transform.position;
+        if (currentGunPosition != originalGunPos)
+        {
+            gunEquiped = true;
+            stage6 = true;
+        }
+
+        //Gestion prochaines instructions
+
+        if (stage7 == true)
+        {
+            FinalFinish.SetActive(true);
+            if(Mathf.Abs(transform.position.x - FinalFinish.transform.position.x) <= 1f && Mathf.Abs(transform.position.z - FinalFinish.transform.position.z) <= 1f)
+            {
+                SceneManager.LoadScene(2, LoadSceneMode.Single);
+            }
+        }
+    }
+}

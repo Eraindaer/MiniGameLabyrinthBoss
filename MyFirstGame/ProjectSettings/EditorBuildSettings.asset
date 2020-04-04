@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 0
+    path: Assets/FPS/Scenes/IntroMenu.unity
+    guid: 56e3faabc5bb30f49a68bb8f1292f988
+  - enabled: 0
+    path: Assets/FPS/Scenes/WinScene.unity
+    guid: 037d06fbede2b4041a843d9ee6fe750c
+  - enabled: 0
+    path: Assets/FPS/Scenes/LoseScene.unity
+    guid: 72e5c65a45893714484002914e3fd521
+  - enabled: 0
+    path: Assets/FPS/Scenes/MainScene.unity
+    guid: d794a2ef8ba31d847ad3c19d03e2ddb9
+  - enabled: 0
+    path: Assets/FPS/Animation/HoverBot/premiereScene.unity
+    guid: fe0febf682b5fd84facbb0642dc0e82f
+  - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: 6837b09540c7e7441bf3266e4d0ac456
+  - enabled: 1
+    path: Assets/Scenes/tutoriel.unity
+    guid: bb9e564a3a05b6747a5fc94345ee33e1
+  - enabled: 1
+    path: Assets/Scenes/Labyrinthe.unity
+    guid: 0f6010439cd86164f9b6aaa9ff65763a
+  - enabled: 1
+    path: Assets/Scenes/Boss.unity
+    guid: 7d1fbc25a4cfaf4469f394947a314f10
+  - enabled: 1
+    path: Assets/Scenes/ThankingScene.unity
+    guid: 49384ff5da42f4c408a8dc3ec51beb18
+  m_configObjects: {}
