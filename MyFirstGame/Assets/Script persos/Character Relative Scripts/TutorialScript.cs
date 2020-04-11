@@ -5,46 +5,53 @@ using UnityEngine.SceneManagement;
 
 public class TutorialScript : MonoBehaviour
 {
-    GameObject canvas;
+    //Compenents des gameObjects
+    private CharacterController _controller;
     Renderer[] rendAI;
     Renderer[] rendButton;
     Renderer[] rendItem;
     Renderer[] rendSphere;
-    GameObject AI;
-    GameObject Button;
-    GameObject Item;
-    GameObject Sphere;
+
+    //GameObjects à assigner
+    public GameObject AI;
+    public GameObject Button;
+    public GameObject Item;
+    public GameObject Sphere;
     public GameObject gun;
-    private CharacterController _controller;
-    private bool stage1, stage2, stage3, stage4, stage5, stage6, stage7;
+    public GameObject canvas;
+    public GameObject FinishWithoutSprint;
+    public GameObject FinishSprint;
+    public GameObject FinishJump;
+    public GameObject FinalFinish;
+
+    //Variables du mouvement
     public float Speed = 10f;
     private float fallAcceleration = 1.005f;
     public float verticalVelocity;
     public float gravity = 7.0f;
     public float jumpForce = 3.5f;
     private float jumpBoost = 5.0f;
-    public Vector3 RayHitPoint;
+
+    //booleens propres à la scene
+    private bool stage1, stage2, stage3, stage4, stage5, stage6, stage7;
+    bool gunEquiped = false;
+    bool buttonActivated = false;
     public bool toChange = false;
     public bool buttonSpotted = false;
     public bool itemSpotted = false;
     public bool sphereSpotted = false;
-    public float HitBox;
+
+    //Timers
     public float timer, timer2;
 
-    bool gunEquiped = false;
-    bool buttonActivated = false;
-
-    GameObject FinishWithoutSprint;
-    GameObject FinishSprint;
-    GameObject FinishJump;
-    GameObject FinalFinish;
-
+    //Vecteurs
+    public Vector3 RayHitPoint;
     Vector3 originalButtonPos;
     Vector3 originalGunPos;
 
-
     void Start()
-    {
+    {   
+        //Initialisation des etapes de la scene + initialisation des differents éléments de la scene
         stage1 = true;
         stage2 = false;
         stage3 = false;
@@ -52,31 +59,27 @@ public class TutorialScript : MonoBehaviour
         stage5 = false;
         stage6 = false;
         stage7 = false;
+        FinishWithoutSprint.SetActive(false);
+        FinishSprint.SetActive(false);
+        FinishJump.SetActive(false);
+        FinalFinish.SetActive(false);
+        gun.SetActive(false);
+        Button.SetActive(false);
+
+        //Assignation des components
         _controller = GetComponent<CharacterController>();
-        Button = GameObject.Find("Button");
-        canvas = GameObject.Find("UI");
-        Sphere = GameObject.Find("Spheres");
-        AI = GameObject.Find("AI");
-        Item = GameObject.Find("Items");
         rendAI = AI.GetComponentsInChildren<Renderer>();
         rendButton = Button.GetComponentsInChildren<Renderer>();
         rendItem = Item.GetComponentsInChildren<Renderer>();
         rendSphere = Sphere.GetComponentsInChildren<Renderer>();
-        
 
-        FinishWithoutSprint = GameObject.Find("Finish");
-        FinishWithoutSprint.SetActive(false);
-        FinishSprint = GameObject.Find("SFinish");
-        FinishSprint.SetActive(false);
-        FinishJump = GameObject.Find("JFinish");
-        FinishJump.SetActive(false);
-        FinalFinish = GameObject.Find("Final");
-        FinalFinish.SetActive(false);
-        gun.SetActive(false);
-        Button.SetActive(false);
+        //Parametres du timer
         timer2 = 3f;
+
+        //Initialisation vecteurs
         originalButtonPos = Button.transform.position;
         originalGunPos = gun.transform.position;
+
         foreach (Renderer r in rendAI)
         {
             r.material.SetColor("_Color", Color.white);
@@ -86,13 +89,11 @@ public class TutorialScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         //Gestion des mouvements du joueur, des sauts
 
         if (stage2 == true) //etape 2 du tutoriel
         {
             Vector3 move = Vector3.zero;
-
             float speedFactor = 1.0f;
 
             if (stage3 == true) //etape 3 du tutoriel
@@ -111,9 +112,7 @@ public class TutorialScript : MonoBehaviour
                     FinishSprint.SetActive(false);
                     FinishJump.SetActive(true);
                     stage4 = true;
-
                 }
-
             }
 
             float totalSpeed = Speed * speedFactor;
@@ -157,29 +156,22 @@ public class TutorialScript : MonoBehaviour
                     stage5 = true;
                     gun.SetActive(true);
                     Button.SetActive(true);
-
                 }
             }
 
             move.y = verticalVelocity * jumpBoost;
-
             _controller.Move(move * Time.deltaTime);
-
         }
-
 
         //Gestion interactions avec des objets/bonus/boutons
 
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(canvas.transform.position);
 
-
         if (stage1 == true) //étape 1 du tutoriel
         {
             if (Physics.Raycast(ray, out hit))
             {
-            
-
                 RayHitPoint = hit.point;
 
                 if (hit.collider.tag == "SkySphere")
@@ -206,11 +198,8 @@ public class TutorialScript : MonoBehaviour
                     }
                 }
 
-
                 if (stage5 == true)
                 {
-                    
-
                     if (hit.collider.tag == "Button")
                     {
                         int j = 0;
@@ -228,12 +217,10 @@ public class TutorialScript : MonoBehaviour
                     {
                         foreach (Renderer r in rendButton)
                         {
-
                             r.material.SetColor("_Color", Color.white);
                             buttonSpotted = false;
                         }
                     }
-
                     if (hit.collider.tag == "Item")
                     {
                         int k = 0;
@@ -246,7 +233,6 @@ public class TutorialScript : MonoBehaviour
                             }
                             k++;
                         }
-
                     }
 
                     if (hit.collider.tag != "Item" && itemSpotted == true)
@@ -257,6 +243,7 @@ public class TutorialScript : MonoBehaviour
                             itemSpotted = false;
                         }
                     }
+
                     if(buttonActivated == true && gunEquiped == true)
                     {
                         stage6 = true;
@@ -267,15 +254,12 @@ public class TutorialScript : MonoBehaviour
                         if (Input.GetMouseButtonDown(0))
                         {
                             if (hit.collider.tag == "Enemy")
-                            {
-                                
+                            {                          
                                 if (hit.collider != null)
                                 {
-
                                     int i = 0;
                                     foreach (Renderer r in rendAI)
                                     {
-
                                         if (Vector3.Distance(AI.transform.GetChild(i).position, RayHitPoint) <= AI.transform.GetChild(i).localScale.x)
                                         {
                                             r.material.SetColor("_Color", Color.red);
@@ -283,14 +267,13 @@ public class TutorialScript : MonoBehaviour
                                             timer = 0.1f;
                                             stage7 = true;
                                         }
-
                                         i++;                               
                                     }
                                 }
                             }
-                        }
-                        
+                        }                       
                     }
+
                     if (timer > 0 && toChange == true)
                     {
                         timer -= Time.deltaTime;
@@ -309,7 +292,6 @@ public class TutorialScript : MonoBehaviour
                         }
                     }
                 }
-
             }
         }
 

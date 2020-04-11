@@ -22,10 +22,8 @@ public class GunSelection : MonoBehaviour
             if (Input.GetKey(KeyCode.E))
             {
                 transform.position = posCamera;
-                rend.material.SetColor("_Color", Color.white);
-            
+                rend.material.SetColor("_Color", Color.white);            
             }
-
         }
     }
 }

@@ -6,13 +6,11 @@ using UnityEngine.SceneManagement;
 public class Pause : MonoBehaviour
 {
     private bool pause = false;
-    GameObject pauseObject;
-    GameObject UI;
+    public GameObject pauseObject;
+    public GameObject UI;
 
     private void Start()
     {
-        UI = GameObject.Find("UI");
-        pauseObject = GameObject.Find("Pause");
         pauseObject.SetActive(false);
         UI.SetActive(true);
         pause = false;
@@ -27,16 +25,13 @@ public class Pause : MonoBehaviour
         {
             pause = !pause;
            if (pause == true)
-            {
-                
+            { 
                 pauseObject.SetActive(true);
                 UI.SetActive(false);
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None;
                 Time.timeScale = 0;
             }
-
-
             else
             {
                 pauseObject.SetActive(false);
@@ -45,21 +40,17 @@ public class Pause : MonoBehaviour
                 Cursor.lockState = CursorLockMode.Locked;
                 Time.timeScale = 1;
             }
-
-        }
-        
+        } 
     }
+
     public void pauseControl()
     {
-
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        
         Time.timeScale = 1;
         pauseObject.SetActive(false);
         UI.SetActive(true);
-        pause = false;
-        
+        pause = false;   
     }
 
     public void LoadLevel(string level)

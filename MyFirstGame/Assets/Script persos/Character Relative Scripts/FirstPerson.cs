@@ -6,16 +6,17 @@ using UnityEngine.SceneManagement;
 public class FirstPerson : MonoBehaviour
 {
     //GameObject & Components
-    GameObject canvas;
+    
     Renderer[] rendAI;
     Renderer[] rendButton;
     Renderer[] rendItem;
     Transform[] bonuses;
-    GameObject AI;
-    GameObject Button;
-    GameObject Item;
-    GameObject Finish;
-    GameObject Bonus;
+    public GameObject AI;
+    public GameObject Button;
+    public GameObject Item;
+    public GameObject Finish;
+    public GameObject Bonus;
+    public GameObject canvas;
 
     //Mouvement du joueur
     private CharacterController _controller;
@@ -54,13 +55,8 @@ public class FirstPerson : MonoBehaviour
     {
         score = 0;
         ScoreGestionner.Instance.Score = score;
+
         //Attribution des gameobject/components
-        canvas = GameObject.Find("UI");
-        AI = GameObject.Find("AIs");
-        Button = GameObject.Find("Buttons");
-        Item = GameObject.Find("Items");
-        Finish = GameObject.Find("Finish");
-        Bonus = GameObject.Find("Bonuses");
         rendAI = AI.GetComponentsInChildren<Renderer>();
         rendButton = Button.GetComponentsInChildren<Renderer>();
         rendItem = Item.GetComponentsInChildren<Renderer>();
@@ -70,16 +66,13 @@ public class FirstPerson : MonoBehaviour
         //Gestion objets
         originalBootsPos = boots.transform.position;
         originalGunPos = gun.transform.position;
-
     }
 
- 
     // Update is called once per frame
     void Update()
     {
         //Gestion du déplacement du joueur et de ses sauts
         Vector3 move = Vector3.zero;
-
         float speedFactor = 1.0f;
         
         if (Input.GetKey(KeyCode.LeftShift))
@@ -191,34 +184,27 @@ public class FirstPerson : MonoBehaviour
             }
                  
             if (Input.GetMouseButtonDown(0) && gunEquiped == true)
-            {
-                
-
+            {              
                 if (hit.collider.tag == "Enemy")
-                {
-
-                    
-                    
+                { 
                     if (hit.collider != null)
                     {
                         int i = 0;
                         foreach (Renderer r in rendAI)
                         {
-
                             if (Vector3.Distance(AI.transform.GetChild(i).position, RayHitPoint) <= AI.transform.GetChild(i).localScale.x)
                             {
                                 r.material.SetColor("_Color", Color.red);
                                 toChange = true;
                                 timer = 0.1f;
-                            }
-                            
+                            } 
                             i++;
                         }
                     }
                 }
-
             }
         }
+
         if (timer > 0 && toChange == true)
         {
             timer -= Time.deltaTime;
@@ -240,8 +226,7 @@ public class FirstPerson : MonoBehaviour
         //Gestion de la mort
 
         if ((transform.position.y <= -20f)||(_hp == 0))
-        {
-            
+        { 
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 

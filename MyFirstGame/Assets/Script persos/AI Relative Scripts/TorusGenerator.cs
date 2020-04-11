@@ -17,7 +17,7 @@ public class TorusGenerator : MonoBehaviour
     System.Random position = new System.Random();
 
     Transform[] TorusPositions;
-    GameObject finalBoss;
+    public GameObject finalBoss;
 
     public GameObject TorusList;
     public int spawners;
@@ -38,8 +38,6 @@ public class TorusGenerator : MonoBehaviour
     private bool BeginTimer;
     System.Random rand = new System.Random();
 
-    
-
     // Start is called before the first frame update
     void Start()
     {
@@ -57,15 +55,12 @@ public class TorusGenerator : MonoBehaviour
         waveTimer = 0;
         pauseTimer = 3f;
         BeginTimer = false;
-        finalBoss = GameObject.Find("Boss");
         finish.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
-    {
-        
-        
+    {  
         test = cloneList.Count;
         if(cloneList.Count != 0)
             for (int i = 0; i < cloneList.Count; i++)
@@ -73,8 +68,7 @@ public class TorusGenerator : MonoBehaviour
                 test1 = Mathf.Abs(Vector3.Distance(cloneList[i].transform.position, player.transform.position) - cloneList[i].GetComponent<Primitives>().segmentRadius);
                 test2 = Mathf.Abs(Mathf.Abs(player.transform.position.y - cloneList[i].transform.position.y) - player.transform.localScale.y);
                 if ((Mathf.Abs(Vector3.Distance(cloneList[i].transform.position, player.transform.position) - cloneList[i].GetComponent<Primitives>().segmentRadius) <= cloneList[i].GetComponent<Primitives>().tubeRadius * 2) && (Mathf.Abs(Mathf.Abs(player.transform.position.y - cloneList[i].transform.position.y) - player.transform.localScale.y) <= cloneList[i].GetComponent<Primitives>().tubeRadius) && (hit==false))
-                {
-                    
+                {               
                     hit = true;
                     timer = 2f;
                     player.GetComponent<JumpingGame>()._hp--;
@@ -89,18 +83,15 @@ public class TorusGenerator : MonoBehaviour
                     }
                 }
                         if (cloneList[i].GetComponent<Primitives>().turn != 1)
-                {
-                
+                {              
                     Destroy(cloneList[i]);
                     cloneList.Remove(cloneList[i]);
                     break;
-
-                }
+               }
             }
 
         if (rand.Next(randomInit) <= 50 && cloneList.Count < 5 && boss == true && waveTimer == 0 && BeginTimer == true)
-        {
-            
+        {           
             clone = Instantiate(cube, TorusPositions[position.Next(spawners)].position, Quaternion.identity) as GameObject;
             clone.SetActive(true);
             clone.transform.SetParent(cubeList.transform);
@@ -110,7 +101,6 @@ public class TorusGenerator : MonoBehaviour
 
             waveTimer = 0.85f;
         }
-
 
         if (pauseTimer > 0)
         {
@@ -150,11 +140,8 @@ public class TorusGenerator : MonoBehaviour
         if (boss == false)
         {
             finalBoss.SetActive(false);
-            finish.SetActive(true);
-            
-
+            finish.SetActive(true);           
         }
-
 
         if (Mathf.Abs(finish.transform.position.x - player.transform.position.x) <= 2f && Mathf.Abs(finish.transform.position.z - player.transform.position.z) <= 2f)
         {

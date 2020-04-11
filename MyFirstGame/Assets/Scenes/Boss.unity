@@ -5072,6 +5072,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 757874df3f86b774381d19c2ece21978, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseObject: {fileID: 0}
+  UI: {fileID: 0}
 --- !u!114 &284922389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5210,6 +5212,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 757874df3f86b774381d19c2ece21978, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseObject: {fileID: 0}
+  UI: {fileID: 0}
 --- !u!114 &378922812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5551,6 +5555,7 @@ GameObject:
   - component: {fileID: 593709887}
   - component: {fileID: 593709888}
   - component: {fileID: 593709882}
+  - component: {fileID: 593709889}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -5570,13 +5575,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c4c40896bed6bd4b994c85f0e3ed1d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 0}
+  canvas: {fileID: 1044562290}
   speed: 0
   verticalVelocity: 0
   gravity: 7
   jumpForce: 3.5
   jumpBoost: 5
   _hp: 0
+  score: 0
 --- !u!136 &593709883
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5686,6 +5692,20 @@ MonoBehaviour:
   verSensitivity: 0
   maxVert: 60
   minVert: -60
+--- !u!114 &593709889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 593709881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 757874df3f86b774381d19c2ece21978, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseObject: {fileID: 1902989969}
+  UI: {fileID: 1044562290}
 --- !u!1 &685422694
 GameObject:
   m_ObjectHideFlags: 0
@@ -5788,16 +5808,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 780256570}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1044562294}
-  m_RootOrder: 3
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 6, y: 38}
+  m_AnchoredPosition: {x: 450, y: 256}
   m_SizeDelta: {x: 300, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &780256572
@@ -6218,7 +6238,6 @@ RectTransform:
   - {fileID: 787168989}
   - {fileID: 531499702}
   - {fileID: 1939678631}
-  - {fileID: 780256571}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6262,6 +6281,7 @@ MonoBehaviour:
   cloneList: []
   instancePos: {fileID: 0}
   test: 0
+  finalBoss: {fileID: 1011341602}
   TorusList: {fileID: 1919058563}
   spawners: 0
   WallRef: {fileID: 513912453}
@@ -6684,7 +6704,6 @@ GameObject:
   - component: {fileID: 1658481757}
   - component: {fileID: 1658481756}
   - component: {fileID: 1658481759}
-  - component: {fileID: 1658481760}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -6773,18 +6792,6 @@ MonoBehaviour:
   verSensitivity: 5
   maxVert: 60
   minVert: -60
---- !u!114 &1658481760
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1658481755}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 757874df3f86b774381d19c2ece21978, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1732566959
 GameObject:
   m_ObjectHideFlags: 0

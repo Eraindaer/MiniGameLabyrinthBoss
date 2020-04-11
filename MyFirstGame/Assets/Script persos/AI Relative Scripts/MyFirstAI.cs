@@ -18,9 +18,6 @@ public class MyFirstAI : MonoBehaviour
         // Start is called before the first frame update
     void Start()
     {
-        
-        player = GameObject.Find("Player");
-        origin = GameObject.Find("Origin");
         currentDestination = origin;
 
         rend = GetComponent<Renderer>();

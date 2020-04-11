@@ -7,7 +7,6 @@ public class JumpingGame : MonoBehaviour
 {
     private CharacterController _controller;
     public GameObject canvas;
-
     public float speed;
     public float verticalVelocity;
     public float gravity = 7.0f;
@@ -20,7 +19,6 @@ public class JumpingGame : MonoBehaviour
     void Start()
     {
         score = 0;
-        canvas = GameObject.Find("UI");
         _controller = GetComponent<CharacterController>();
         speed = 10f;
         _hp = 3;
@@ -65,7 +63,6 @@ public class JumpingGame : MonoBehaviour
         }
 
         move.y = verticalVelocity * jumpBoost;
-
         _controller.Move(move * Time.deltaTime);
 
         if(_hp < 3)

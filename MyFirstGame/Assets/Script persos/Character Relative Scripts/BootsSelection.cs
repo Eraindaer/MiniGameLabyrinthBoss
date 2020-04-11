@@ -24,7 +24,6 @@ public class BootsSelection : MonoBehaviour
                 transform.position = bootsPos;
                 rend.material.SetColor("_Color", Color.white);
             } 
-
         }
     }
 }

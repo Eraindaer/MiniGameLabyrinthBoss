@@ -28,16 +28,14 @@ public class CubeController : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-       
+    { 
         rend.material.SetColor("_Color", Color.white);
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(canvas.transform.position);
         CubePos = cube.transform.position;
 
         if (Physics.Raycast(ray, out hit))
-        {
-           
+        {         
             RayHitPoint = hit.point;
             HitBox = Vector3.Distance(CubePos, RayHitPoint);
             if (hit.collider != null && HitBox <= cube.transform.localScale.x)
@@ -49,7 +47,6 @@ public class CubeController : MonoBehaviour
                     anim.Play("CubeRotate1", 0, 0.0f);
                     inAnimation = true;
                     timer = 1;
-
                 }
             }
             else sptLight.intensity = 0;
