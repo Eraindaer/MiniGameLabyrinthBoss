@@ -27,21 +27,21 @@ public class CameraController : MonoBehaviour
     void Update()
     {
          if (axis == RotationAxis.MouseX) {
-            transform.Rotate(0, Input.GetAxis("Mouse X") * horSensitivity, 0);
+            transform.Rotate(0, Input.GetAxis("Mouse X") * horSensitivity * Time.deltaTime, 0);
         }
 
         else if (axis == RotationAxis.MouseY) {
             rotationX += Input.GetAxis("Mouse Y") * verSensitivity;
             rotationX = Mathf.Clamp(rotationX, minVert, maxVert);
             float rotationY = transform.localEulerAngles.y;
-            transform.localEulerAngles = new Vector3(rotationX, rotationY, 0);
+            transform.localEulerAngles = new Vector3(rotationX*Time.deltaTime, rotationY*Time.deltaTime, 0);
         }
         else {
             rotationX += Input.GetAxis("Mouse Y") * verSensitivity;
             rotationX = Mathf.Clamp(rotationX, minVert, maxVert);
             float delta = Input.GetAxis("Mouse X") * horSensitivity;
             float rotationY = transform.localEulerAngles.y + delta;
-            transform.localEulerAngles = new Vector3(rotationX, rotationY, 0);
+            transform.localEulerAngles = new Vector3(rotationX*Time.deltaTime, rotationY*Time.deltaTime, 0);
         }
     }
 }

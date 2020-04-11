@@ -67,7 +67,7 @@ public class JumpingGame : MonoBehaviour
 
         if(_hp < 3)
         {
-            canvas.transform.GetChild(_hp).gameObject.SetActive(false);
+            canvas.transform.GetChild(_hp-1).gameObject.SetActive(false);
         }
 
         if (_hp == 0)
