@@ -306,7 +306,7 @@ GameObject:
   - component: {fileID: 34033163}
   - component: {fileID: 34033162}
   - component: {fileID: 34033161}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bonus 3
   m_TagString: Bonus
   m_Icon: {fileID: 0}
@@ -1387,7 +1387,7 @@ GameObject:
   - component: {fileID: 157683354}
   - component: {fileID: 157683357}
   - component: {fileID: 157683358}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: AI 5
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -3031,7 +3031,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 337656258}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Items
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3340,7 +3340,7 @@ GameObject:
   - component: {fileID: 355898964}
   - component: {fileID: 355898963}
   - component: {fileID: 355898966}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Button6
   m_TagString: Button
   m_Icon: {fileID: 0}
@@ -3623,7 +3623,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 369465108}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Buttons
   m_TagString: Button
   m_Icon: {fileID: 0}
@@ -3756,7 +3756,7 @@ GameObject:
   - component: {fileID: 410301104}
   - component: {fileID: 410301107}
   - component: {fileID: 410301108}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: AI 4
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -3979,7 +3979,7 @@ GameObject:
   - component: {fileID: 437352117}
   - component: {fileID: 437352116}
   - component: {fileID: 437352120}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Gun
   m_TagString: Item
   m_Icon: {fileID: 0}
@@ -4261,7 +4261,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 458509405}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Interactible items
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5417,7 +5417,7 @@ GameObject:
   - component: {fileID: 699888315}
   - component: {fileID: 699888314}
   - component: {fileID: 699888317}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Button3
   m_TagString: Button
   m_Icon: {fileID: 0}
@@ -6524,7 +6524,7 @@ GameObject:
   - component: {fileID: 775829040}
   - component: {fileID: 775829039}
   - component: {fileID: 775829038}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bonus 2
   m_TagString: Bonus
   m_Icon: {fileID: 0}
@@ -6616,7 +6616,7 @@ GameObject:
   - component: {fileID: 777671120}
   - component: {fileID: 777671119}
   - component: {fileID: 777671123}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Boots
   m_TagString: Item
   m_Icon: {fileID: 0}
@@ -6720,7 +6720,7 @@ GameObject:
   - component: {fileID: 780712441}
   - component: {fileID: 780712440}
   - component: {fileID: 780712443}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Button4
   m_TagString: Button
   m_Icon: {fileID: 0}
@@ -8504,7 +8504,7 @@ GameObject:
   - component: {fileID: 895688698}
   - component: {fileID: 895688701}
   - component: {fileID: 895688702}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: AI 2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -8909,7 +8909,7 @@ GameObject:
   - component: {fileID: 937809682}
   - component: {fileID: 937809681}
   - component: {fileID: 937809684}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Button2
   m_TagString: Button
   m_Icon: {fileID: 0}
@@ -9364,7 +9364,7 @@ GameObject:
   - component: {fileID: 982992972}
   - component: {fileID: 982992971}
   - component: {fileID: 982992974}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Button1
   m_TagString: Button
   m_Icon: {fileID: 0}
@@ -10290,7 +10290,7 @@ GameObject:
   - component: {fileID: 1135294476}
   - component: {fileID: 1135294479}
   - component: {fileID: 1135294480}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: AI 1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -10980,7 +10980,7 @@ GameObject:
   - component: {fileID: 1247282250}
   - component: {fileID: 1247282253}
   - component: {fileID: 1247282254}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: AI 3
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -11564,7 +11564,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1335065344}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bonuses
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14566,7 +14566,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1673096303}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: AIs
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -14604,7 +14604,7 @@ GameObject:
   - component: {fileID: 1679889537}
   - component: {fileID: 1679889536}
   - component: {fileID: 1679889535}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bonus 1
   m_TagString: Bonus
   m_Icon: {fileID: 0}
@@ -22918,7 +22918,7 @@ GameObject:
   - component: {fileID: 2123302746}
   - component: {fileID: 2123302745}
   - component: {fileID: 2123302748}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Button5
   m_TagString: Button
   m_Icon: {fileID: 0}

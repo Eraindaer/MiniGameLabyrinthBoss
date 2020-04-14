@@ -66,6 +66,7 @@ public class FirstPerson : MonoBehaviour
         //Gestion objets
         originalBootsPos = boots.transform.position;
         originalGunPos = gun.transform.position;
+        LayerMask mask = LayerMask.GetMask("Interactible Items");
     }
 
     // Update is called once per frame
@@ -133,7 +134,7 @@ public class FirstPerson : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(canvas.transform.position);
         AIPos = AI.transform.position;
       
-        if (Physics.Raycast(ray, out hit))
+        if (Physics.Raycast(ray, out hit, 10000.0f, 12))
         {
             RayHitPoint = hit.point;
 

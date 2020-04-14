@@ -5212,8 +5212,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 757874df3f86b774381d19c2ece21978, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseObject: {fileID: 0}
-  UI: {fileID: 0}
+  pauseObject: {fileID: 1902989969}
+  UI: {fileID: 1044562290}
 --- !u!114 &378922812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5312,7 +5312,7 @@ GameObject:
   - component: {fileID: 483719079}
   - component: {fileID: 483719078}
   m_Layer: 5
-  m_Name: Text
+  m_Name: TextResume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5493,16 +5493,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 531499701}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 3.51}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1044562294}
+  m_Father: {fileID: 1237186938}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -378.63, y: 186.28}
+  m_AnchoredPosition: {x: -378.62997, y: 186.28}
   m_SizeDelta: {x: 25, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &531499703
@@ -5575,7 +5575,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c4c40896bed6bd4b994c85f0e3ed1d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  finish: {fileID: 1569934761}
+  finalBoss: {fileID: 1011341602}
   canvas: {fileID: 1044562290}
+  healthPoints: {fileID: 1237186937}
   speed: 0
   verticalVelocity: 0
   gravity: 7
@@ -5718,7 +5721,7 @@ GameObject:
   - component: {fileID: 685422697}
   - component: {fileID: 685422696}
   m_Layer: 5
-  m_Name: Text
+  m_Name: TextMainMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5795,7 +5798,7 @@ GameObject:
   - component: {fileID: 780256573}
   - component: {fileID: 780256572}
   m_Layer: 5
-  m_Name: Text
+  m_Name: TextTimer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5813,7 +5816,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1044562294}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5885,11 +5888,11 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 787168988}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 3.51}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1044562294}
+  m_Father: {fileID: 1237186938}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -6065,6 +6068,7 @@ GameObject:
   - component: {fileID: 1011341605}
   - component: {fileID: 1011341604}
   - component: {fileID: 1011341603}
+  - component: {fileID: 1011341607}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -6143,8 +6147,39 @@ Transform:
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1011341607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011341602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ad22692288a8b947b56bc8b50d7eebe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TimerSeen: {fileID: 780256572}
+  cube: {fileID: 224587108}
+  cubeList: {fileID: 1188008884}
+  cloneList: []
+  instancePos: {fileID: 0}
+  test: 0
+  TorusList: {fileID: 1919058563}
+  spawners: 0
+  WallRef: {fileID: 513912453}
+  player: {fileID: 593709881}
+  hit: 0
+  test1: 0
+  test2: 0
+  timer: 0
+  bossTimer: 0
+  waveTimer: 0
+  finish: {fileID: 1569934761}
+  randomInit: 0
+  boss: 0
 --- !u!1 &1044562290
 GameObject:
   m_ObjectHideFlags: 0
@@ -6235,10 +6270,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 787168989}
-  - {fileID: 531499702}
-  - {fileID: 1939678631}
   - {fileID: 780256571}
+  - {fileID: 1237186938}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6256,7 +6289,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1188008886}
-  - component: {fileID: 1188008885}
   m_Layer: 0
   m_Name: TorusGenerated
   m_TagString: Untagged
@@ -6264,37 +6296,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1188008885
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1188008884}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ad22692288a8b947b56bc8b50d7eebe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TimerSeen: {fileID: 780256572}
-  cube: {fileID: 224587108}
-  cubeList: {fileID: 1188008884}
-  cloneList: []
-  instancePos: {fileID: 0}
-  test: 0
-  finalBoss: {fileID: 1011341602}
-  TorusList: {fileID: 1919058563}
-  spawners: 0
-  WallRef: {fileID: 513912453}
-  player: {fileID: 593709881}
-  hit: 0
-  test1: 0
-  test2: 0
-  timer: 0
-  bossTimer: 0
-  waveTimer: 0
-  finish: {fileID: 1569934761}
-  randomInit: 10000
 --- !u!4 &1188008886
 Transform:
   m_ObjectHideFlags: 0
@@ -6302,13 +6303,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1188008884}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.4, y: 0, z: -7.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224587109}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1196469053
 GameObject:
@@ -6414,7 +6415,7 @@ GameObject:
   - component: {fileID: 1200106997}
   - component: {fileID: 1200106996}
   m_Layer: 5
-  m_Name: Text
+  m_Name: TextPause
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6554,6 +6555,44 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1227381207}
   m_CullTransparentMesh: 0
+--- !u!1 &1237186937
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1237186938}
+  m_Layer: 5
+  m_Name: HPs
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1237186938
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237186937}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 787168989}
+  - {fileID: 531499702}
+  - {fileID: 1939678631}
+  m_Father: {fileID: 1044562294}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1378715193
 GameObject:
   m_ObjectHideFlags: 0
@@ -7039,11 +7078,11 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1939678630}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 3.51}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1044562294}
+  m_Father: {fileID: 1237186938}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}

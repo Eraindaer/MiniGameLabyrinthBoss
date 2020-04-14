@@ -5,8 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class JumpingGame : MonoBehaviour
 {
+    //GameObjects et Components
     private CharacterController _controller;
+    public GameObject finish;
+    public GameObject finalBoss;
     public GameObject canvas;
+    public GameObject healthPoints;
+
+    //Variables du joueur
     public float speed;
     public float verticalVelocity;
     public float gravity = 7.0f;
@@ -67,10 +73,26 @@ public class JumpingGame : MonoBehaviour
 
         if(_hp < 3)
         {
-            canvas.transform.GetChild(_hp-1).gameObject.SetActive(false);
+            healthPoints.transform.GetChild(_hp).gameObject.SetActive(false);
         }
 
-        if (_hp == 0)
+        if (finalBoss.GetComponent<TorusGenerator>().boss == false)
+        {
+            score += 50;
+            finalBoss.SetActive(false);
+            finish.SetActive(true);
+        }
+        
+
+        if (Mathf.Abs(finish.transform.position.x - transform.position.x) <= 2f && Mathf.Abs(finish.transform.position.z - transform.position.z) <= 2f)
+        {
+            ScoreGestionner.Instance.Score += score;
+            SceneManager.LoadScene(4, LoadSceneMode.Single);
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
+
+        if (_hp <= 0)
         {
             ScoreGestionner.Instance.Score -= 10;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

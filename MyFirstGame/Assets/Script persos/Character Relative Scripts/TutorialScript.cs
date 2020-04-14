@@ -49,6 +49,8 @@ public class TutorialScript : MonoBehaviour
     Vector3 originalButtonPos;
     Vector3 originalGunPos;
 
+    public LayerMask mask;
+
     void Start()
     {   
         //Initialisation des etapes de la scene + initialisation des differents éléments de la scene
@@ -74,7 +76,7 @@ public class TutorialScript : MonoBehaviour
         rendSphere = Sphere.GetComponentsInChildren<Renderer>();
 
         //Parametres du timer
-        timer2 = 3f;
+        timer2 = 2f;
 
         //Initialisation vecteurs
         originalButtonPos = Button.transform.position;
@@ -84,6 +86,7 @@ public class TutorialScript : MonoBehaviour
         {
             r.material.SetColor("_Color", Color.white);
         }
+        mask = LayerMask.GetMask("Interactible Items");
     }
 
     // Update is called once per frame
@@ -170,7 +173,7 @@ public class TutorialScript : MonoBehaviour
 
         if (stage1 == true) //étape 1 du tutoriel
         {
-            if (Physics.Raycast(ray, out hit))
+            if (Physics.Raycast(ray, out hit, 10000.0f, mask))
             {
                 RayHitPoint = hit.point;
 

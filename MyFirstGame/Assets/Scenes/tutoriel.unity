@@ -315,7 +315,7 @@ GameObject:
   - component: {fileID: 41863329}
   - component: {fileID: 41863328}
   - component: {fileID: 41863327}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Sphere (1)
   m_TagString: SkySphere
   m_Icon: {fileID: 0}
@@ -494,7 +494,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 131159504}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -514,7 +514,7 @@ Transform:
   m_Children:
   - {fileID: 1434801973}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &148809508
 GameObject:
@@ -601,12 +601,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 148809508}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 171.48901, y: 11.8, z: 28.588413}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -8.070984, y: -16.98, z: -76.171585}
   m_LocalScale: {x: 100, y: 1, z: 100}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_Father: {fileID: 1525441095}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &218117836
 GameObject:
@@ -934,28 +934,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f401cfcf435dfc479ea2a9ffca05952, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 1841879039}
   AI: {fileID: 1607138881}
   Button: {fileID: 131159503}
   Item: {fileID: 786538866}
   Sphere: {fileID: 1419396897}
   gun: {fileID: 309017272}
-  Speed: 10
-  verticalVelocity: 0
-  gravity: 7
-  jumpForce: 3.5
-  RayHitPoint: {x: 0, y: 0, z: 0}
-  toChange: 0
-  buttonSpotted: 0
-  itemSpotted: 0
-  sphereSpotted: 0
-  HitBox: 0
-  timer: 0
-  timer2: 0
+  canvas: {fileID: 1841879039}
   FinishWithoutSprint: {fileID: 427670555}
   FinishSprint: {fileID: 1836464603}
   FinishJump: {fileID: 1559368636}
   FinalFinish: {fileID: 805780111}
+  Speed: 10
+  verticalVelocity: 0
+  gravity: 7
+  jumpForce: 3.5
+  toChange: 0
+  buttonSpotted: 0
+  itemSpotted: 0
+  sphereSpotted: 0
+  timer: 0
+  timer2: 0
+  RayHitPoint: {x: 0, y: 0, z: 0}
 --- !u!136 &290201219
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1028,7 +1027,7 @@ Transform:
   m_Children:
   - {fileID: 12077910}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &290201223
 MonoBehaviour:
@@ -1073,7 +1072,7 @@ GameObject:
   - component: {fileID: 291484188}
   - component: {fileID: 291484187}
   - component: {fileID: 291484186}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Sphere (2)
   m_TagString: SkySphere
   m_Icon: {fileID: 0}
@@ -1165,7 +1164,7 @@ GameObject:
   - component: {fileID: 309017275}
   - component: {fileID: 309017274}
   - component: {fileID: 309017277}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Gun
   m_TagString: Item
   m_Icon: {fileID: 0}
@@ -1299,7 +1298,7 @@ Transform:
   - {fileID: 756798866}
   - {fileID: 984393664}
   m_Father: {fileID: 1525441095}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &427670555
 GameObject:
@@ -1369,7 +1368,7 @@ Transform:
   m_Children:
   - {fileID: 713828223}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &568852066
 GameObject:
@@ -1435,7 +1434,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &610771451
 GameObject:
@@ -11267,7 +11266,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 786538867}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Items
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11281,13 +11280,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 786538866}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 171.48901, y: 32.85, z: 82.47841}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 309017273}
-  m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_Father: {fileID: 1299137452}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &804591304
 GameObject:
@@ -11448,7 +11447,7 @@ Transform:
   m_Children:
   - {fileID: 634753280}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &921957332
 GameObject:
@@ -11630,7 +11629,7 @@ GameObject:
   - component: {fileID: 960997438}
   - component: {fileID: 960997437}
   - component: {fileID: 960997436}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Sphere
   m_TagString: SkySphere
   m_Icon: {fileID: 0}
@@ -11801,7 +11800,7 @@ RectTransform:
   m_Children:
   - {fileID: 685854473}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -16755,7 +16754,39 @@ Transform:
   m_LocalScale: {x: 50, y: 20, z: 40}
   m_Children: []
   m_Father: {fileID: 1525441095}
-  m_RootOrder: 1
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1299137451
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1299137452}
+  m_Layer: 12
+  m_Name: Interactible Items
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1299137452
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1299137451}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 786538867}
+  - {fileID: 1419396898}
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1419396897
 GameObject:
@@ -16766,7 +16797,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1419396898}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Spheres
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16780,15 +16811,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1419396897}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 180.16202, y: 13.265096, z: 27.969286}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 291484185}
   - {fileID: 960997435}
   - {fileID: 41863326}
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_Father: {fileID: 1299137452}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1434801972
 GameObject:
@@ -16802,7 +16833,7 @@ GameObject:
   - component: {fileID: 1434801976}
   - component: {fileID: 1434801975}
   - component: {fileID: 1434801974}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Button
   m_TagString: Button
   m_Icon: {fileID: 0}
@@ -17090,10 +17121,11 @@ Transform:
   m_LocalPosition: {x: 179.56, y: 28.78, z: 104.76}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 148809512}
   - {fileID: 419914501}
   - {fileID: 1257085819}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1559368636
 GameObject:
@@ -17163,7 +17195,7 @@ Transform:
   m_Children:
   - {fileID: 1824417904}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &1607138881
 GameObject:
@@ -17174,7 +17206,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1607138882}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: AI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17194,7 +17226,7 @@ Transform:
   m_Children:
   - {fileID: 1984084768}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1632562302
 GameObject:
@@ -17353,7 +17385,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1650107805
 GameObject:
@@ -22478,7 +22510,7 @@ Transform:
   m_Children:
   - {fileID: 1012557383}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &1841879039
 GameObject:
@@ -22572,7 +22604,7 @@ RectTransform:
   m_Children:
   - {fileID: 1720656749}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -22591,7 +22623,7 @@ GameObject:
   - component: {fileID: 1984084771}
   - component: {fileID: 1984084770}
   - component: {fileID: 1984084769}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: AI 1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
