@@ -5,9 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class JumpingGame : MonoBehaviour
 {
-
+    //List et transform pour la liste
     Transform[] HPTransform;
-
     List<GameObject> HPList = new List<GameObject>();
 
     //GameObjects et Components
@@ -27,6 +26,7 @@ public class JumpingGame : MonoBehaviour
     private float fallAcceleration = 1.005f;
     public int _hp;
     public int score;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,7 +51,6 @@ public class JumpingGame : MonoBehaviour
     void Update()
     {
         Vector3 move = Vector3.zero;
-
         float speedFactor = 1.0f;
 
         if (Input.GetKey(KeyCode.LeftShift))
@@ -99,7 +98,6 @@ public class JumpingGame : MonoBehaviour
             finish.SetActive(true);
         }
         
-
         if (Mathf.Abs(finish.transform.position.x - transform.position.x) <= 2f && Mathf.Abs(finish.transform.position.z - transform.position.z) <= 2f)
         {
             score += 50;

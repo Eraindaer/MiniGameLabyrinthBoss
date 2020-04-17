@@ -106,7 +106,6 @@ public class TutorialScript : MonoBehaviour
     void Update()
     {
         //Gestion des mouvements du joueur, des sauts
-
         if (stage2 == true) //etape 2 du tutoriel
         {
             Vector3 move = Vector3.zero;
@@ -149,7 +148,6 @@ public class TutorialScript : MonoBehaviour
                 FinishSprint.SetActive(true);
             }
 
-
             if (stage4 == true) //etape 4 du tutoriel
             {
                 if (_controller.isGrounded)
@@ -180,7 +178,6 @@ public class TutorialScript : MonoBehaviour
         }
 
         //Gestion interactions avec des objets/bonus/boutons
-
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(canvas.transform.position);
 
@@ -211,8 +208,7 @@ public class TutorialScript : MonoBehaviour
                 if (stage5 == true)
                 {
                     if (hit.collider.tag == "Button")
-                    {
-                        
+                    {                     
                         if (Vector3.Distance(Button.transform.position, RayHitPoint) <= Button.transform.localScale.x)
                         {
                             rendButton.material.SetColor("_Color", Color.cyan);
@@ -222,7 +218,6 @@ public class TutorialScript : MonoBehaviour
                     }
                     if (hit.collider.tag != "Button" && buttonSpotted == true)
                     {
-
                         rendButton.material.SetColor("_Color", Color.white);
                         buttonSpotted = false;
 
@@ -237,7 +232,6 @@ public class TutorialScript : MonoBehaviour
                     {
                         rendGun.material.SetColor("_Color", Color.white);
                         itemSpotted = false;
-
                     }
 
                     if(buttonActivated == true && gunEquiped == true)
@@ -294,7 +288,6 @@ public class TutorialScript : MonoBehaviour
         }
 
         //Gestion prochaines instructions
-
         if (stage7 == true)
         {
             FinalFinish.SetActive(true);

@@ -11,7 +11,6 @@ public class FirstPerson : MonoBehaviour
     Transform[] buttonTransform;
     Transform[] AITransform;
     Transform[] itemTransform;
-
     public GameObject AI;
     public GameObject Button;
     public GameObject Item;
@@ -19,10 +18,11 @@ public class FirstPerson : MonoBehaviour
     public GameObject Bonus;
     public GameObject canvas;
 
-    public List<GameObject> bonusList;
-    public List<GameObject> buttonList;
-    public List<GameObject> AIList;
-    public List<GameObject> itemList;
+    //Listes
+    List<GameObject> bonusList;
+    List<GameObject> buttonList;
+    List<GameObject> AIList;
+    List<GameObject> itemList;
 
     //Mouvement du joueur
     private CharacterController _controller;
@@ -37,7 +37,6 @@ public class FirstPerson : MonoBehaviour
     public float timer = 0; 
 
     //Gestion des variables liées au saut
-
     public float verticalVelocity;
     public float gravity = 7.0f;
     public float jumpForce = 3.5f;
@@ -45,20 +44,20 @@ public class FirstPerson : MonoBehaviour
     private float fallAcceleration = 1.005f;
 
     //Variables liées aux items
-
     Vector3 originalBootsPos;
     Vector3 originalGunPos;
     public GameObject boots;
     public GameObject gun;
     private bool bootsEquiped = false;
     private bool gunEquiped = false;
-
+    
+    //Variables liées au joueur
     public int _hp = 3;
     public int score;
 
     // Start is called before the first frame update
     void Start()
-    {
+    {   
         score = 0;
         ScoreGestionner.Instance.Score = score;
 
@@ -75,7 +74,6 @@ public class FirstPerson : MonoBehaviour
         mask = LayerMask.GetMask("Interactible Items");
 
         //Initialisation des listes
-
         if (bonusList == null)
             bonusList = new List<GameObject>();
         if (buttonList == null)
@@ -151,11 +149,9 @@ public class FirstPerson : MonoBehaviour
         }
 
         move.y = verticalVelocity * jumpBoost;
-
         _controller.Move(move * Time.deltaTime);
 
         //Gestion des bonus
-
         foreach(GameObject g in bonusList)
         { 
             if (Vector3.Distance(transform.position, g.transform.position) <= 2.5f)
@@ -173,7 +169,6 @@ public class FirstPerson : MonoBehaviour
         if (Physics.Raycast(ray, out hit, 10000.0f, mask))
         {
             RayHitPoint = hit.point;
-
             if (hit.collider.tag == "Button")
             {
                 foreach(GameObject g in buttonList)
@@ -192,7 +187,6 @@ public class FirstPerson : MonoBehaviour
                     buttonSpotted = false;
                 }
             }
-
             if (hit.collider.tag == "Item")
             {
                 foreach (GameObject g in itemList)
@@ -202,10 +196,8 @@ public class FirstPerson : MonoBehaviour
                     g.GetComponent<Renderer>().material.SetColor("_Color", Color.yellow);
                     itemSpotted = true;
                     }
-                }
-                    
+                }                   
             }
-
             if (hit.collider.tag != "Item" && itemSpotted == true)
             {
                 foreach(GameObject g in itemList)
@@ -213,8 +205,7 @@ public class FirstPerson : MonoBehaviour
                     g.GetComponent<Renderer>().material.SetColor("_Color", Color.white);
                     itemSpotted = false;
                 }
-            }
-                 
+            }               
             if (Input.GetMouseButtonDown(0) && gunEquiped == true)
             {              
                 if (hit.collider.tag == "Enemy")
@@ -250,14 +241,12 @@ public class FirstPerson : MonoBehaviour
         }
 
         //Gestion de la mort
-
         if ((transform.position.y <= -20f)||(_hp == 0))
         { 
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
         //Gestion des bottes et de l'arme
-
         Vector3 currentBootsPosition = boots.transform.position;
 
         if (currentBootsPosition != originalBootsPos)
@@ -273,7 +262,6 @@ public class FirstPerson : MonoBehaviour
         }
 
         //Gestion de l'arrivée
-
         if (Mathf.Abs(transform.position.x - Finish.transform.position.x) <= 2 && Mathf.Abs(transform.position.z - Finish.transform.position.z) <= 2)
         {
             ScoreGestionner.Instance.Score += score;

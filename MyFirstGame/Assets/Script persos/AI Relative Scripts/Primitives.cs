@@ -5,9 +5,7 @@ using System.Collections;
 [RequireComponent(typeof(MeshFilter), typeof(MeshRenderer))]
 public class Primitives : MonoBehaviour
 {
-
     private static float Pi = 3.14159f;
-
     public float segmentRadius;
     public float tubeRadius = 0.1f;
     public int segments;
@@ -22,14 +20,12 @@ public class Primitives : MonoBehaviour
     }
 
     void Update()
-    {
-        
+    {        
         Torus(radMax);
     }
 
     public void Torus(float radiusMax)
     {
-
         segmentRadius+=0.5f;
         if (segmentRadius >= radiusMax-1)
             turn++;
