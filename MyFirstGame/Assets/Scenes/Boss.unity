@@ -5480,7 +5480,7 @@ GameObject:
   - component: {fileID: 531499704}
   - component: {fileID: 531499703}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: HP 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5577,6 +5577,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   finish: {fileID: 1569934761}
   finalBoss: {fileID: 1011341602}
+  TorusGenerator: {fileID: 0}
   canvas: {fileID: 1044562290}
   healthPoints: {fileID: 1237186937}
   speed: 0
@@ -5875,7 +5876,7 @@ GameObject:
   - component: {fileID: 787168991}
   - component: {fileID: 787168990}
   m_Layer: 5
-  m_Name: Image
+  m_Name: HP 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6162,24 +6163,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TimerSeen: {fileID: 780256572}
-  cube: {fileID: 224587108}
-  cubeList: {fileID: 1188008884}
-  cloneList: []
-  instancePos: {fileID: 0}
-  test: 0
-  TorusList: {fileID: 1919058563}
-  spawners: 0
-  WallRef: {fileID: 513912453}
-  player: {fileID: 593709881}
-  hit: 0
-  test1: 0
-  test2: 0
   timer: 0
   bossTimer: 0
   waveTimer: 0
+  cloneList: []
+  instancePos: {fileID: 0}
+  TorusList: {fileID: 1919058563}
+  WallRef: {fileID: 513912453}
+  cube: {fileID: 224587108}
+  cubeList: {fileID: 1188008884}
   finish: {fileID: 1569934761}
   randomInit: 0
   boss: 0
+  spawners: 0
+  test: 0
+  test1: 0
+  test2: 0
+  player: {fileID: 593709881}
+  hit: 0
 --- !u!1 &1044562290
 GameObject:
   m_ObjectHideFlags: 0
@@ -7065,7 +7066,7 @@ GameObject:
   - component: {fileID: 1939678633}
   - component: {fileID: 1939678632}
   m_Layer: 5
-  m_Name: Image (2)
+  m_Name: HP 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

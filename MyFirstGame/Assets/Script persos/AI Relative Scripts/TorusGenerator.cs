@@ -139,6 +139,8 @@ public class TorusGenerator : MonoBehaviour
             {
                 bossTimer = 0;
                 boss = false;
+                BeginTimer = false;
+                cubeList.SetActive(false);
             }
         }
 

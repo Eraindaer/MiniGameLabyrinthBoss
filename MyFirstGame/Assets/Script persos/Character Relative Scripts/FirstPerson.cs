@@ -6,17 +6,23 @@ using UnityEngine.SceneManagement;
 public class FirstPerson : MonoBehaviour
 {
     //GameObject & Components
-    
-    Renderer[] rendAI;
-    Renderer[] rendButton;
-    Renderer[] rendItem;
-    Transform[] bonuses;
+    LayerMask mask;
+    Transform[] bonusTransform;
+    Transform[] buttonTransform;
+    Transform[] AITransform;
+    Transform[] itemTransform;
+
     public GameObject AI;
     public GameObject Button;
     public GameObject Item;
     public GameObject Finish;
     public GameObject Bonus;
     public GameObject canvas;
+
+    public List<GameObject> bonusList;
+    public List<GameObject> buttonList;
+    public List<GameObject> AIList;
+    public List<GameObject> itemList;
 
     //Mouvement du joueur
     private CharacterController _controller;
@@ -35,7 +41,7 @@ public class FirstPerson : MonoBehaviour
     public float verticalVelocity;
     public float gravity = 7.0f;
     public float jumpForce = 3.5f;
-    private float jumpBoost = 1.0f;
+    private float jumpBoost = 3.0f;
     private float fallAcceleration = 1.005f;
 
     //Variables liées aux items
@@ -57,16 +63,48 @@ public class FirstPerson : MonoBehaviour
         ScoreGestionner.Instance.Score = score;
 
         //Attribution des gameobject/components
-        rendAI = AI.GetComponentsInChildren<Renderer>();
-        rendButton = Button.GetComponentsInChildren<Renderer>();
-        rendItem = Item.GetComponentsInChildren<Renderer>();
         _controller = GetComponent<CharacterController>();
-        bonuses = Bonus.GetComponentsInChildren<Transform>();
+        bonusTransform = Bonus.GetComponentsInChildren<Transform>();
+        buttonTransform = Button.GetComponentsInChildren<Transform>();
+        AITransform = AI.GetComponentsInChildren<Transform>();
+        itemTransform = Item.GetComponentsInChildren<Transform>();
 
         //Gestion objets
         originalBootsPos = boots.transform.position;
         originalGunPos = gun.transform.position;
-        LayerMask mask = LayerMask.GetMask("Interactible Items");
+        mask = LayerMask.GetMask("Interactible Items");
+
+        //Initialisation des listes
+
+        if (bonusList == null)
+            bonusList = new List<GameObject>();
+        if (buttonList == null)
+            buttonList = new List<GameObject>();
+        if (AIList == null)
+            AIList = new List<GameObject>();
+        if (itemList == null)
+            itemList = new List<GameObject>();
+
+        foreach (Transform t in bonusTransform)
+        {
+            bonusList.Add(t.gameObject);
+        }
+        foreach(Transform t in buttonTransform)
+        {
+            buttonList.Add(t.gameObject);
+        }
+        foreach(Transform t in AITransform)
+        {
+            AIList.Add(t.gameObject);
+        }
+        foreach(Transform t in itemTransform)
+        {
+            itemList.Add(t.gameObject);
+        }
+        bonusList.Remove(bonusList[0]);
+        buttonList.Remove(buttonList[0]);
+        AIList.Remove(AIList[0]);
+        itemList.Remove(itemList[0]);
     }
 
     // Update is called once per frame
@@ -118,15 +156,13 @@ public class FirstPerson : MonoBehaviour
 
         //Gestion des bonus
 
-        foreach(Transform t in bonuses)
-        {
-            int h = 0;
-            if (Vector3.Distance(transform.position, Bonus.transform.GetChild(h).position) <= 2.5f)
+        foreach(GameObject g in bonusList)
+        { 
+            if (Vector3.Distance(transform.position, g.transform.position) <= 2.5f)
             {
-                Bonus.transform.GetChild(h).position = new Vector3(Bonus.transform.GetChild(h).position.x, Bonus.transform.GetChild(h).position.y - 15f, Bonus.transform.GetChild(h).position.z) ;
+                g.transform.position = new Vector3(g.transform.position.x, g.transform.position.y - 15f, g.transform.position.z) ;
                 score += 10;
             }
-            h++;
         }
 
         //Gestion du viseur du joueur (et du hitmarker)
@@ -134,52 +170,47 @@ public class FirstPerson : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(canvas.transform.position);
         AIPos = AI.transform.position;
       
-        if (Physics.Raycast(ray, out hit, 10000.0f, 12))
+        if (Physics.Raycast(ray, out hit, 10000.0f, mask))
         {
             RayHitPoint = hit.point;
 
             if (hit.collider.tag == "Button")
             {
-                int j = 0;
-                foreach(Renderer r in rendButton)
+                foreach(GameObject g in buttonList)
                 {
-                    if (Vector3.Distance(Button.transform.GetChild(j).position, RayHitPoint) <= Button.transform.GetChild(j).localScale.x){
-                        r.material.SetColor("_Color", Color.cyan);
+                    if (Vector3.Distance(g.transform.position, RayHitPoint) <= g.transform.localScale.x){
+                        g.GetComponent<Renderer>().material.SetColor("_Color", Color.cyan);
                         buttonSpotted = true;
                     }
-                    j++;
                 }
             }
             if (hit.collider.tag != "Button" && buttonSpotted == true)
             {
-                foreach(Renderer r in rendButton)
+                foreach(GameObject g in buttonList)
                 {
-                    
-                    r.material.SetColor("_Color", Color.white);
+                    g.GetComponent<Renderer>().material.SetColor("_Color", Color.white);
                     buttonSpotted = false;
                 }
             }
 
             if (hit.collider.tag == "Item")
             {
-                int k = 0;
-                foreach (Renderer r in rendItem)
+                foreach (GameObject g in itemList)
                 {
-                    if (Vector3.Distance(Item.transform.GetChild(k).position, RayHitPoint) <= Item.transform.GetChild(k).localScale.x)
-                    { 
-                    r.material.SetColor("_Color", Color.yellow);
+                    if (Vector3.Distance(g.transform.position, RayHitPoint) <= g.transform.localScale.x)
+                    {
+                    g.GetComponent<Renderer>().material.SetColor("_Color", Color.yellow);
                     itemSpotted = true;
                     }
-                    k++;
                 }
                     
             }
 
             if (hit.collider.tag != "Item" && itemSpotted == true)
             {
-                foreach(Renderer r in rendItem)
+                foreach(GameObject g in itemList)
                 {
-                    r.material.SetColor("_Color", Color.white);
+                    g.GetComponent<Renderer>().material.SetColor("_Color", Color.white);
                     itemSpotted = false;
                 }
             }
@@ -190,16 +221,14 @@ public class FirstPerson : MonoBehaviour
                 { 
                     if (hit.collider != null)
                     {
-                        int i = 0;
-                        foreach (Renderer r in rendAI)
+                        foreach (GameObject g in AIList)
                         {
-                            if (Vector3.Distance(AI.transform.GetChild(i).position, RayHitPoint) <= AI.transform.GetChild(i).localScale.x)
+                            if (Vector3.Distance(g.transform.position, RayHitPoint) <= g.transform.localScale.x)
                             {
-                                r.material.SetColor("_Color", Color.red);
+                                g.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
                                 toChange = true;
                                 timer = 0.1f;
                             } 
-                            i++;
                         }
                     }
                 }
@@ -213,13 +242,9 @@ public class FirstPerson : MonoBehaviour
             {
                 timer = 0;
                 toChange = false;
-                foreach (Renderer r in rendAI)
+                foreach (GameObject g in AIList)
                 {
-                    r.material.SetColor("_Color", Color.white);
-                }
-                foreach (Renderer r in rendButton)
-                {
-                    r.material.SetColor("_Color", Color.white);
+                    g.GetComponent<Renderer>().material.SetColor("_Color", Color.white);
                 }
             }
         }

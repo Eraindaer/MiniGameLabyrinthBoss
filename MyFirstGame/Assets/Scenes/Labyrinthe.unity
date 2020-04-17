@@ -748,7 +748,7 @@ GameObject:
   - component: {fileID: 55038738}
   - component: {fileID: 55038737}
   - component: {fileID: 55038736}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube (71)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1504,7 +1504,7 @@ MonoBehaviour:
   agent: {fileID: 157683357}
   origin: {fileID: 0}
   currentDestination: {fileID: 0}
-  player: {fileID: 0}
+  player: {fileID: 446272639}
   _HP: 3
 --- !u!1 &173031135
 GameObject:
@@ -2595,7 +2595,7 @@ GameObject:
   - component: {fileID: 278520791}
   - component: {fileID: 278520790}
   - component: {fileID: 278520789}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube (28)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3873,7 +3873,7 @@ MonoBehaviour:
   agent: {fileID: 410301107}
   origin: {fileID: 0}
   currentDestination: {fileID: 0}
-  player: {fileID: 0}
+  player: {fileID: 446272639}
   _HP: 3
 --- !u!1 &434868668
 GameObject:
@@ -4571,7 +4571,7 @@ GameObject:
   - component: {fileID: 549727649}
   - component: {fileID: 549727648}
   - component: {fileID: 549727647}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube (69)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5521,7 +5521,7 @@ GameObject:
   - component: {fileID: 701066296}
   - component: {fileID: 701066295}
   - component: {fileID: 701066294}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube (40)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5794,7 +5794,7 @@ GameObject:
   - component: {fileID: 711681839}
   - component: {fileID: 711681838}
   - component: {fileID: 711681837}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube (101)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6824,7 +6824,7 @@ GameObject:
   - component: {fileID: 784607771}
   - component: {fileID: 784607770}
   - component: {fileID: 784607769}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube (19)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7552,7 +7552,7 @@ GameObject:
   - component: {fileID: 816509745}
   - component: {fileID: 816509744}
   - component: {fileID: 816509743}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube (85)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8621,7 +8621,7 @@ MonoBehaviour:
   agent: {fileID: 895688701}
   origin: {fileID: 0}
   currentDestination: {fileID: 0}
-  player: {fileID: 0}
+  player: {fileID: 446272639}
   _HP: 3
 --- !u!1 &896774151
 GameObject:
@@ -8635,7 +8635,7 @@ GameObject:
   - component: {fileID: 896774155}
   - component: {fileID: 896774154}
   - component: {fileID: 896774153}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube (74)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8726,7 +8726,7 @@ GameObject:
   - component: {fileID: 896891012}
   - component: {fileID: 896891011}
   - component: {fileID: 896891010}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube (91)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10407,7 +10407,7 @@ MonoBehaviour:
   agent: {fileID: 1135294479}
   origin: {fileID: 0}
   currentDestination: {fileID: 0}
-  player: {fileID: 0}
+  player: {fileID: 446272639}
   _HP: 3
 --- !u!1 &1174643352
 GameObject:
@@ -10513,7 +10513,7 @@ GameObject:
   - component: {fileID: 1196355591}
   - component: {fileID: 1196355590}
   - component: {fileID: 1196355589}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube (57)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11097,7 +11097,7 @@ MonoBehaviour:
   agent: {fileID: 1247282253}
   origin: {fileID: 0}
   currentDestination: {fileID: 0}
-  player: {fileID: 0}
+  player: {fileID: 446272639}
   _HP: 3
 --- !u!1 &1273328389
 GameObject:
@@ -16310,7 +16310,7 @@ GameObject:
   - component: {fileID: 1857811908}
   - component: {fileID: 1857811907}
   - component: {fileID: 1857811906}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Door4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16583,7 +16583,7 @@ GameObject:
   - component: {fileID: 1925795085}
   - component: {fileID: 1925795084}
   - component: {fileID: 1925795083}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube (100)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21554,7 +21554,7 @@ GameObject:
   - component: {fileID: 1993354611}
   - component: {fileID: 1993354610}
   - component: {fileID: 1993354609}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube (60)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

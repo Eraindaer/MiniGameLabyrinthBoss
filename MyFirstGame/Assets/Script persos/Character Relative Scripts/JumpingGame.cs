@@ -5,10 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class JumpingGame : MonoBehaviour
 {
+
+    Transform[] HPTransform;
+
+    List<GameObject> HPList = new List<GameObject>();
+
     //GameObjects et Components
     private CharacterController _controller;
     public GameObject finish;
     public GameObject finalBoss;
+    public GameObject TorusGenerator;
     public GameObject canvas;
     public GameObject healthPoints;
 
@@ -24,10 +30,21 @@ public class JumpingGame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Initialisation des variables
         score = 0;
-        _controller = GetComponent<CharacterController>();
         speed = 10f;
         _hp = 3;
+
+        //Initialisation des components
+        _controller = GetComponent<CharacterController>();
+        HPTransform = healthPoints.GetComponentsInChildren<Transform>();
+        
+        //Initialisation des listes
+        foreach(Transform t in HPTransform)
+        {
+            HPList.Add(t.gameObject);
+        }
+        HPList.Remove(HPList[0]);
     }
 
     // Update is called once per frame
@@ -73,12 +90,11 @@ public class JumpingGame : MonoBehaviour
 
         if(_hp < 3)
         {
-            healthPoints.transform.GetChild(_hp).gameObject.SetActive(false);
+           HPList[_hp].gameObject.SetActive(false);
         }
 
         if (finalBoss.GetComponent<TorusGenerator>().boss == false)
         {
-            score += 50;
             finalBoss.SetActive(false);
             finish.SetActive(true);
         }
@@ -86,6 +102,7 @@ public class JumpingGame : MonoBehaviour
 
         if (Mathf.Abs(finish.transform.position.x - transform.position.x) <= 2f && Mathf.Abs(finish.transform.position.z - transform.position.z) <= 2f)
         {
+            score += 50;
             ScoreGestionner.Instance.Score += score;
             SceneManager.LoadScene(4, LoadSceneMode.Single);
             Cursor.visible = true;
@@ -94,7 +111,8 @@ public class JumpingGame : MonoBehaviour
 
         if (_hp <= 0)
         {
-            ScoreGestionner.Instance.Score -= 10;
+            score -= 10;
+            ScoreGestionner.Instance.Score += score;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
         }

@@ -7,10 +7,13 @@ public class TutorialScript : MonoBehaviour
 {
     //Compenents des gameObjects
     private CharacterController _controller;
-    Renderer[] rendAI;
-    Renderer[] rendButton;
-    Renderer[] rendItem;
-    Renderer[] rendSphere;
+    Renderer rendAI;
+    Renderer rendButton;
+    Renderer rendGun;
+    Transform[] sphereTransform;
+
+    //Listes
+    List<GameObject> sphereList;
 
     //GameObjects à assigner
     public GameObject AI;
@@ -48,7 +51,8 @@ public class TutorialScript : MonoBehaviour
     public Vector3 RayHitPoint;
     Vector3 originalButtonPos;
     Vector3 originalGunPos;
-
+    
+    //LayerMask
     public LayerMask mask;
 
     void Start()
@@ -70,23 +74,32 @@ public class TutorialScript : MonoBehaviour
 
         //Assignation des components
         _controller = GetComponent<CharacterController>();
-        rendAI = AI.GetComponentsInChildren<Renderer>();
-        rendButton = Button.GetComponentsInChildren<Renderer>();
-        rendItem = Item.GetComponentsInChildren<Renderer>();
-        rendSphere = Sphere.GetComponentsInChildren<Renderer>();
+        rendAI = AI.GetComponent<Renderer>();
+        rendButton = Button.GetComponent<Renderer>();
+        rendGun = gun.GetComponent<Renderer>();
+        sphereTransform = Sphere.GetComponentsInChildren<Transform>();
 
-        //Parametres du timer
-        timer2 = 2f;
+        //Parametres du timer de sprint
+        timer2 = 1.5f;
 
         //Initialisation vecteurs
         originalButtonPos = Button.transform.position;
         originalGunPos = gun.transform.position;
 
-        foreach (Renderer r in rendAI)
-        {
-            r.material.SetColor("_Color", Color.white);
-        }
+        rendAI.material.SetColor("_Color", Color.white);
         mask = LayerMask.GetMask("Interactible Items");
+
+        //Initialisation listes
+        if(sphereList == null)
+        {
+            sphereList = new List<GameObject>();
+        }
+
+        foreach(Transform t in sphereTransform)
+        {
+            sphereList.Add(t.gameObject);
+        }
+        sphereList.Remove(sphereList[0]);
     }
 
     // Update is called once per frame
@@ -179,22 +192,16 @@ public class TutorialScript : MonoBehaviour
 
                 if (hit.collider.tag == "SkySphere")
                 {
-                    int g = 0;
-                    foreach(Renderer r in rendSphere)
+                    foreach(GameObject g in sphereList)
                     {
-                        if (Vector3.Distance(Sphere.transform.GetChild(g).position, RayHitPoint) <= Sphere.transform.GetChild(g).localScale.x)
+                        if (Vector3.Distance(g.transform.position, RayHitPoint) <= g.transform.localScale.x)
                         {
-                            r.material.SetColor("_Color", Color.green);
+                            g.GetComponent<Renderer>().material.SetColor("_Color", Color.green);
                             sphereSpotted = true;    
                         }
-                        g++;
                     }
                     if (sphereSpotted == true)
                     {
-                        foreach(Renderer r in rendSphere)
-                        {
-                            r.material.SetColor("_Color", Color.white);
-                        }
                         stage2 = true;
                         FinishWithoutSprint.SetActive(true);
                         Sphere.SetActive(false);
@@ -205,46 +212,32 @@ public class TutorialScript : MonoBehaviour
                 {
                     if (hit.collider.tag == "Button")
                     {
-                        int j = 0;
-                        foreach (Renderer r in rendButton)
+                        
+                        if (Vector3.Distance(Button.transform.position, RayHitPoint) <= Button.transform.localScale.x)
                         {
-                            if (Vector3.Distance(Button.transform.GetChild(j).position, RayHitPoint) <= Button.transform.GetChild(j).localScale.x)
-                            {
-                                r.material.SetColor("_Color", Color.cyan);
-                                buttonSpotted = true;
-                            }
-                            j++;
+                            rendButton.material.SetColor("_Color", Color.cyan);
+                            buttonSpotted = true;
                         }
+                        
                     }
                     if (hit.collider.tag != "Button" && buttonSpotted == true)
                     {
-                        foreach (Renderer r in rendButton)
-                        {
-                            r.material.SetColor("_Color", Color.white);
-                            buttonSpotted = false;
-                        }
+
+                        rendButton.material.SetColor("_Color", Color.white);
+                        buttonSpotted = false;
+
                     }
                     if (hit.collider.tag == "Item")
                     {
-                        int k = 0;
-                        foreach (Renderer r in rendItem)
-                        {
-                            if (Vector3.Distance(Item.transform.GetChild(k).position, RayHitPoint) <= Item.transform.GetChild(k).localScale.x)
-                            {
-                                r.material.SetColor("_Color", Color.yellow);
-                                itemSpotted = true;
-                            }
-                            k++;
-                        }
+                        rendGun.material.SetColor("_Color", Color.yellow);
+                        itemSpotted = true;
                     }
 
                     if (hit.collider.tag != "Item" && itemSpotted == true)
                     {
-                        foreach (Renderer r in rendItem)
-                        {
-                            r.material.SetColor("_Color", Color.white);
-                            itemSpotted = false;
-                        }
+                        rendGun.material.SetColor("_Color", Color.white);
+                        itemSpotted = false;
+
                     }
 
                     if(buttonActivated == true && gunEquiped == true)
@@ -260,18 +253,13 @@ public class TutorialScript : MonoBehaviour
                             {                          
                                 if (hit.collider != null)
                                 {
-                                    int i = 0;
-                                    foreach (Renderer r in rendAI)
+                                    if (Vector3.Distance(AI.transform.position, RayHitPoint) <= AI.transform.localScale.x)
                                     {
-                                        if (Vector3.Distance(AI.transform.GetChild(i).position, RayHitPoint) <= AI.transform.GetChild(i).localScale.x)
-                                        {
-                                            r.material.SetColor("_Color", Color.red);
-                                            toChange = true;
-                                            timer = 0.1f;
-                                            stage7 = true;
-                                        }
-                                        i++;                               
-                                    }
+                                        rendAI.material.SetColor("_Color", Color.red);
+                                        toChange = true;
+                                        timer = 0.1f;
+                                        stage7 = true;
+                                    }                             
                                 }
                             }
                         }                       
@@ -284,14 +272,8 @@ public class TutorialScript : MonoBehaviour
                         {
                             timer = 0;
                             toChange = false;
-                            foreach (Renderer r in rendAI)
-                            {
-                                r.material.SetColor("_Color", Color.white);
-                            }
-                            foreach (Renderer r in rendButton)
-                            {
-                                r.material.SetColor("_Color", Color.white);
-                            }
+                            rendAI.material.SetColor("_Color", Color.white);          
+                            rendButton.material.SetColor("_Color", Color.white);
                         }
                     }
                 }
