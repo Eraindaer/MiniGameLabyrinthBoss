@@ -92,7 +92,7 @@ public class JumpingGame : MonoBehaviour
            HPList[_hp].gameObject.SetActive(false);
         }
 
-        if (finalBoss.GetComponent<TorusGenerator>().boss == false)
+        if (TorusGenerator.GetComponent<TorusGenerator>().boss == false)
         {
             finalBoss.SetActive(false);
             finish.SetActive(true);

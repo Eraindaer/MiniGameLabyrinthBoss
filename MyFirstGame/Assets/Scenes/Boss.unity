@@ -5577,7 +5577,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   finish: {fileID: 1569934761}
   finalBoss: {fileID: 1011341602}
-  TorusGenerator: {fileID: 0}
+  TorusGenerator: {fileID: 1188008884}
   canvas: {fileID: 1044562290}
   healthPoints: {fileID: 1237186937}
   speed: 0
@@ -6069,7 +6069,6 @@ GameObject:
   - component: {fileID: 1011341605}
   - component: {fileID: 1011341604}
   - component: {fileID: 1011341603}
-  - component: {fileID: 1011341607}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -6150,37 +6149,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1011341607
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1011341602}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ad22692288a8b947b56bc8b50d7eebe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TimerSeen: {fileID: 780256572}
-  timer: 0
-  bossTimer: 0
-  waveTimer: 0
-  cloneList: []
-  instancePos: {fileID: 0}
-  TorusList: {fileID: 1919058563}
-  WallRef: {fileID: 513912453}
-  cube: {fileID: 224587108}
-  cubeList: {fileID: 1188008884}
-  finish: {fileID: 1569934761}
-  randomInit: 0
-  boss: 0
-  spawners: 0
-  test: 0
-  test1: 0
-  test2: 0
-  player: {fileID: 593709881}
-  hit: 0
 --- !u!1 &1044562290
 GameObject:
   m_ObjectHideFlags: 0
@@ -6290,6 +6258,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1188008886}
+  - component: {fileID: 1188008885}
   m_Layer: 0
   m_Name: TorusGenerated
   m_TagString: Untagged
@@ -6297,6 +6266,37 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1188008885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1188008884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ad22692288a8b947b56bc8b50d7eebe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TimerSeen: {fileID: 780256572}
+  timer: 0
+  bossTimer: 0
+  waveTimer: 0
+  cloneList: []
+  instancePos: {fileID: 0}
+  TorusList: {fileID: 1919058563}
+  WallRef: {fileID: 513912453}
+  cube: {fileID: 224587108}
+  cubeList: {fileID: 1188008884}
+  finish: {fileID: 1569934761}
+  randomInit: 0
+  boss: 0
+  spawners: 0
+  test: 0
+  test1: 0
+  test2: 0
+  player: {fileID: 593709881}
+  hit: 0
 --- !u!4 &1188008886
 Transform:
   m_ObjectHideFlags: 0
@@ -6591,7 +6591,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -70, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1378715193

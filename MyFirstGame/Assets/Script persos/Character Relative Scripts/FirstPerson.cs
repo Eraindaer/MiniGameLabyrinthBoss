@@ -262,7 +262,7 @@ public class FirstPerson : MonoBehaviour
         }
 
         //Gestion de l'arrivée
-        if (Mathf.Abs(transform.position.x - Finish.transform.position.x) <= 2 && Mathf.Abs(transform.position.z - Finish.transform.position.z) <= 2)
+        if (Mathf.Abs(transform.position.x - Finish.transform.position.x) <= 2f && Mathf.Abs(transform.position.z - Finish.transform.position.z) <= 2f)
         {
             ScoreGestionner.Instance.Score += score;
             SceneManager.LoadScene(3, LoadSceneMode.Single);

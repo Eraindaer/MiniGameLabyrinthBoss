@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class TutorialScript : MonoBehaviour
 {
-    //Compenents des gameObjects
+    //Components des gameObjects
     private CharacterController _controller;
     Renderer rendAI;
     Renderer rendButton;
@@ -80,7 +80,7 @@ public class TutorialScript : MonoBehaviour
         sphereTransform = Sphere.GetComponentsInChildren<Transform>();
 
         //Parametres du timer de sprint
-        timer2 = 1.5f;
+        timer2 = 1f;
 
         //Initialisation vecteurs
         originalButtonPos = Button.transform.position;
@@ -122,7 +122,7 @@ public class TutorialScript : MonoBehaviour
                 }
                 if (Input.GetKey(KeyCode.LeftControl))
                     speedFactor = 0.5f;
-                if(timer2 == 0 && Mathf.Abs(FinishSprint.transform.position.x - transform.position.x) <= 0.5f && Mathf.Abs(FinishSprint.transform.position.z - transform.position.z) <= 0.5f)
+                if(timer2 == 0 && Mathf.Abs(FinishSprint.transform.position.x - transform.position.x) <= 1.5f && Mathf.Abs(FinishSprint.transform.position.z - transform.position.z) <= 1.5f)
                 {
                     FinishSprint.SetActive(false);
                     FinishJump.SetActive(true);
@@ -141,7 +141,7 @@ public class TutorialScript : MonoBehaviour
             if (Input.GetKey(KeyCode.D))
                 move += (transform.right) * totalSpeed;
 
-            if (Mathf.Abs(transform.position.x - FinishWithoutSprint.transform.position.x) <= 0.5f && Mathf.Abs(transform.position.z - FinishWithoutSprint.transform.position.z) <= 0.5f)
+            if (Mathf.Abs(transform.position.x - FinishWithoutSprint.transform.position.x) <= 1.5f && Mathf.Abs(transform.position.z - FinishWithoutSprint.transform.position.z) <= 1.5f)
             {
                 stage3 = true;
                 FinishWithoutSprint.SetActive(false);
@@ -291,7 +291,7 @@ public class TutorialScript : MonoBehaviour
         if (stage7 == true)
         {
             FinalFinish.SetActive(true);
-            if(Mathf.Abs(transform.position.x - FinalFinish.transform.position.x) <= 1f && Mathf.Abs(transform.position.z - FinalFinish.transform.position.z) <= 1f)
+            if(Mathf.Abs(transform.position.x - FinalFinish.transform.position.x) <= 1.5f && Mathf.Abs(transform.position.z - FinalFinish.transform.position.z) <= 1.5f)
             {
                 SceneManager.LoadScene(2, LoadSceneMode.Single);
             }
